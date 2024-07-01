@@ -1,0 +1,17 @@
+syntax = "proto3";
+package remap.adverts;
+
+option go_package = "remap/x/adverts/types";
+
+message Advert {
+  uint64 id = 1;
+  string advertId = 2; 
+  string state = 3; 
+  string assetId = 4; 
+  uint64 price = 5; 
+  uint64 minRentalPeriod = 6; 
+  uint64 maxRentalPeriod = 7; 
+  string conditions = 8; 
+  uint64 expirationDate = 9; 
+  string creator = 10;
+}

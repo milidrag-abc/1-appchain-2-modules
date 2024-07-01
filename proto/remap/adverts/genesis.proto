@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package remap.adverts;
+
+import "gogoproto/gogo.proto";
+import "remap/adverts/params.proto";
+import "remap/adverts/advert.proto";
+
+option go_package = "remap/x/adverts/types";
+
+// GenesisState defines the adverts module's genesis state.
+message GenesisState {
+           Params params      = 1 [(gogoproto.nullable) = false];
+  repeated Advert advertList  = 2 [(gogoproto.nullable) = false];
+           uint64 advertCount = 3;
+}
+

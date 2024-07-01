@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package remap.adverts;
+
+import "remap/adverts/advert.proto";
+
+option go_package = "remap/x/adverts/types";
+
+// Msg defines the Msg service.
+service Msg {
+  rpc CreateAdvert (MsgCreateAdvert) returns (MsgCreateAdvertResponse);
+  rpc UpdateAdvert (MsgUpdateAdvert) returns (MsgUpdateAdvertResponse);
+  rpc DeleteAdvert (MsgDeleteAdvert) returns (MsgDeleteAdvertResponse);
+}
+message MsgCreateAdvert {
+  string creator         = 1;
+  string advertId        = 2;
+  string state           = 3;
+  string assetId         = 4;
+  uint64 price           = 5;
+  uint64 minRentalPeriod = 6;
+  uint64 maxRentalPeriod = 7;
+  string conditions      = 8;
+  uint64 expirationDate  = 9;
+}
+
+message MsgCreateAdvertResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateAdvert {
+  string creator         =  1;
+  uint64 id              =  2;
+  string advertId        =  3;
+  string state           =  4;
+  string assetId         =  5;
+  uint64 price           =  6;
+  uint64 minRentalPeriod =  7;
+  uint64 maxRentalPeriod =  8;
+  string conditions      =  9;
+  uint64 expirationDate  = 10;
+}
+
+message MsgUpdateAdvertResponse {}
+
+message MsgDeleteAdvert {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteAdvertResponse {}
+

@@ -1,0 +1,18 @@
+syntax = "proto3";
+package remap.assets;
+
+option go_package = "remap/x/assets/types";
+
+message Asset {
+  uint64 id = 1;
+  string assetId = 2; 
+  uint64 version = 3; 
+  string state = 4; 
+  bool vcAvailable = 5; 
+  string assetType = 6; 
+  string owner = 7; 
+  string address = 8; 
+  uint64 assetSize = 9; 
+  string properties = 10; 
+  string creator = 11;
+}

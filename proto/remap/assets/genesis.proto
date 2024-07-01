@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package remap.assets;
+
+import "gogoproto/gogo.proto";
+import "remap/assets/params.proto";
+import "remap/assets/asset.proto";
+
+option go_package = "remap/x/assets/types";
+
+// GenesisState defines the assets module's genesis state.
+message GenesisState {
+           Params params     = 1 [(gogoproto.nullable) = false];
+  repeated Asset  assetList  = 2 [(gogoproto.nullable) = false];
+           uint64 assetCount = 3;
+}
+

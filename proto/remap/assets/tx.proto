@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package remap.assets;
+
+import "remap/assets/asset.proto";
+
+option go_package = "remap/x/assets/types";
+
+// Msg defines the Msg service.
+service Msg {
+  rpc CreateAsset (MsgCreateAsset) returns (MsgCreateAssetResponse);
+  rpc UpdateAsset (MsgUpdateAsset) returns (MsgUpdateAssetResponse);
+  rpc DeleteAsset (MsgDeleteAsset) returns (MsgDeleteAssetResponse);
+}
+message MsgCreateAsset {
+  string creator     =  1;
+  string assetId     =  2;
+  uint64 version     =  3;
+  string state       =  4;
+  bool   vcAvailable =  5;
+  string assetType   =  6;
+  string owner       =  7;
+  string address     =  8;
+  uint64 assetSize   =  9;
+  string properties  = 10;
+}
+
+message MsgCreateAssetResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateAsset {
+  string creator     =  1;
+  uint64 id          =  2;
+  string assetId     =  3;
+  uint64 version     =  4;
+  string state       =  5;
+  bool   vcAvailable =  6;
+  string assetType   =  7;
+  string owner       =  8;
+  string address     =  9;
+  uint64 assetSize   = 10;
+  string properties  = 11;
+}
+
+message MsgUpdateAssetResponse {}
+
+message MsgDeleteAsset {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteAssetResponse {}
+

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package remap.adverts;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "remap/adverts/params.proto";
+import "remap/adverts/advert.proto";
+
+option go_package = "remap/x/adverts/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/remap/adverts/params";
+  
+  }
+  
+  // Queries a list of Advert items.
+  rpc Advert    (QueryGetAdvertRequest) returns (QueryGetAdvertResponse) {
+    option (google.api.http).get = "/remap/adverts/advert/{id}";
+  
+  }
+  rpc AdvertAll (QueryAllAdvertRequest) returns (QueryAllAdvertResponse) {
+    option (google.api.http).get = "/remap/adverts/advert";
+  
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetAdvertRequest {
+  uint64 id = 1;
+}
+
+message QueryGetAdvertResponse {
+  Advert Advert = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllAdvertRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllAdvertResponse {
+  repeated Advert                                 Advert     = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
